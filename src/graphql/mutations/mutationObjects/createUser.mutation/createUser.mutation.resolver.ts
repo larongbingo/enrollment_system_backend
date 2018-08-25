@@ -18,5 +18,8 @@ export const createUserMutationResolver: GraphQLFieldResolver<void, void, NewUse
 
       return new SuccessfulRequest({ id: user.id });
     })
-    .catch(err => new FailedRequest('Error occured during the creation of the user, please try again.'));
+    .catch(err => {
+      console.log(err);
+      return new FailedRequest('Error occured during the creation of the user, please try again.')
+    });
   }
