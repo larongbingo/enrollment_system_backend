@@ -1,5 +1,6 @@
 import { expect, request } from 'chai';
 import { Server } from 'http';
+import { inspect } from 'util';
 import 'mocha';
 
 import { UserAttributes, Models } from '@database/index';
@@ -14,8 +15,8 @@ export function createUserMutationTest(server: Server) {
       middleName: 'ASDF',
       lastName: 'ASDF'
     };
-
-    const requestString = `/api?query=mutation{createUser(username: "${tempUser.username}", password: "${tempUser.password}", firstName: "${tempUser.firstName}", middleName: "${tempUser.middleName}", lastName: "${tempUser.lastName}")}`;
+    
+    const requestString = `/api?query=mutation{createUser(userDetails:${inspect(tempUser).replace(/([\'])/g, '"')})}`
   
     after(function(done) {
       (async function() {
