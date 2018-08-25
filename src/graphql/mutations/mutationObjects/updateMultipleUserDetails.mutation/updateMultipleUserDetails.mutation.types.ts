@@ -1,4 +1,4 @@
-import { GraphQLInputObjectTypeConfig, GraphQLString, GraphQLInputObjectType } from 'graphql';
+import { GraphQLInputObjectTypeConfig, GraphQLString, GraphQLInputObjectType, GraphQLNonNull } from 'graphql';
 
 import { UserAttributes } from '@database/index';
 
@@ -12,15 +12,15 @@ const ValidFieldsTypeConfig: GraphQLInputObjectTypeConfig = {
   description: 'All of the fields that the user can edit or update',
   fields: () => ({
     firstName: {
-      type: GraphQLString,
+      type: new GraphQLNonNull(GraphQLString),
       description: 'The first name of the user',
     },
     middleName: {
-      type: GraphQLString,
+      type: new GraphQLNonNull(GraphQLString),
       description: 'The middle name of the user',
     },
     lastName: {
-      type: GraphQLString,
+      type: new GraphQLNonNull(GraphQLString),
       description: 'The last name of the user',
     },
     address: {
@@ -28,11 +28,11 @@ const ValidFieldsTypeConfig: GraphQLInputObjectTypeConfig = {
       description: 'The address of the user',
     },
     username: {
-      type: GraphQLString,
+      type: new GraphQLNonNull(GraphQLString),
       description: 'The username of the user'
     },
     password: {
-      type: GraphQLString,
+      type: new GraphQLNonNull(GraphQLString),
       description: 'The password of the user'
     }
   })
