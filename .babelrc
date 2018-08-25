@@ -1,0 +1,23 @@
+{
+  "presets": [
+    ["@babel/env", {
+      "targets": {
+        "node": "8.11"
+      }
+    }],
+    "@babel/typescript"
+  ],
+  "plugins": [
+    "@babel/proposal-class-properties",
+    "@babel/proposal-object-rest-spread",
+    ["module-resolver", {
+      "root": ["./"],
+      "alias": {
+        "@database": "./src/database",
+        "@graphql": "./src/graphql",
+        "@server": "./src/app",
+        "@lib": "./src/lib"
+      }
+    }]
+  ]
+}
