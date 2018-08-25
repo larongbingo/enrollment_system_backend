@@ -27,20 +27,22 @@ export function createUserMutationTest(server: Server) {
 
     it('create a user', function(done) {
       (async function() {
-        request(server)
+        await request(server)
         .post(requestString)
-        .then(req => expect(req.body.data.createUser.success).to.be.equal(true));
-        done();
+        .then(req => expect(req.body.data.createUser.success).to.be.equal(true))
+        .then(() => done())
+        .catch(err => done(err));
       })();
     });
 
 
     it('fails to create a user with the username', function(done) {
       (async function() {
-        request(server)
+        await request(server)
         .post(requestString)
-        .then(req => expect(req.body.data.createUser.success).to.be.equal(false));
-        done();
+        .then(req => expect(req.body.data.createUser.success).to.be.equal(false))
+        .then(() => done())
+        .catch(err => done(err));
       })();
     });
   });
