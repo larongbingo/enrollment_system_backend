@@ -12,15 +12,15 @@ const ValidFieldsTypeConfig: GraphQLInputObjectTypeConfig = {
   description: 'All of the fields that the user can edit or update',
   fields: () => ({
     firstName: {
-      type: new GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       description: 'The first name of the user',
     },
     middleName: {
-      type: new GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       description: 'The middle name of the user',
     },
     lastName: {
-      type: new GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       description: 'The last name of the user',
     },
     address: {
@@ -28,11 +28,11 @@ const ValidFieldsTypeConfig: GraphQLInputObjectTypeConfig = {
       description: 'The address of the user',
     },
     username: {
-      type: new GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       description: 'The username of the user'
     },
     password: {
-      type: new GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
       description: 'The password of the user'
     }
   })
