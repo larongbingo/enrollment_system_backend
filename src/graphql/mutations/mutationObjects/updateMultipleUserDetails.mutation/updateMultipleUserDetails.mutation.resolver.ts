@@ -21,7 +21,7 @@ export const updateMultipleUserDetailsMutationResolver:
 
           return await user.save()
           .then(async () => await token.destroy())
-          .then(async () => new SuccessfulRequest({updateDetails: args.update}));
+          .then(async () => new SuccessfulRequest({updatedDetails: args.update}));
         });
       })
       .catch(err => {
