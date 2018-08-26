@@ -1,6 +1,6 @@
 import { GraphQLFieldResolver } from 'graphql';
 
-import { UserAttributes, createUser } from '@database/index';
+import { createUser } from '@database/index';
 import { SuccessfulRequest, FailedRequest } from '@graphql/types';
 
 import { NewUserDetails } from './createUser.mutation.types';
