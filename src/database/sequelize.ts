@@ -6,9 +6,9 @@ import { UserModelFactory, TokenModelFactory } from './models';
  * Holds the MySQL Client info to connect
  */
 const MYSQL_DATABASE_CONN_INFO = {
-  DATABASE_NAME: process.env.MYSQL_DATABASE_NAME || '',
-  MYSQL_USERNAME: process.env.MYSQL_USERNAME || '',
-  MYSQL_PASSWORD: process.env.MYSQL_PASSWORD || ''
+  DATABASE_NAME: process.env.MYSQL_DATABASE_NAME || 'enrollment_system',
+  MYSQL_USERNAME: process.env.MYSQL_USERNAME || 'root',
+  MYSQL_PASSWORD: process.env.MYSQL_PASSWORD || 'root'
 };
 
 export const sequelize = new Sequelize(
