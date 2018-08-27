@@ -17,7 +17,8 @@ export const sequelize = new Sequelize(
   MYSQL_DATABASE_CONN_INFO.MYSQL_PASSWORD, 
   {
     dialect: 'mysql',
-    logging: process.env.NODE_ENV === 'testing' ? false : true
+    logging: process.env.NODE_ENV === 'testing' ? false : true,
+    host: process.env.MYSQL_HOST ? process.env.MYSQL_HOST : '127.0.0.1'
   }
 );
 
