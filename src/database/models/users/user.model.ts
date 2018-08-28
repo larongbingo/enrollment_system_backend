@@ -6,9 +6,15 @@ import { HashCredentials } from './hash.credentials';
 export function UserModelFactory(sequelize: Sequelize) {
   const options: DefineOptions<UserInstance> = {
     hooks: {
-      async beforeValidate(user) {
-        await HashCredentials(user, user.password)
+      async beforeUpdate(user) {
+        if(user.password) {
+          await HashCredentials(user, user.password)
           .then(pw => user.password = pw);
+        }
+      },
+      async beforeCreate(user) {
+        await HashCredentials(user, user.password)
+        .then(pw => user.password = pw);
       }
     },
     paranoid: true
