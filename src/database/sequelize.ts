@@ -1,6 +1,7 @@
 import Sequelize from 'sequelize';
 
 import { UserModelFactory, TokenModelFactory } from './models';
+import { LogsModelFactory } from '@database/models/logs';
 
 /**
  * Holds the MySQL Client info to connect
@@ -24,7 +25,8 @@ export const sequelize = new Sequelize(
 
 export const Models = {
   Users: UserModelFactory(sequelize),
-  Tokens: TokenModelFactory(sequelize)
+  Tokens: TokenModelFactory(sequelize),
+  Logs: LogsModelFactory(sequelize)
 };
 
 export default {
