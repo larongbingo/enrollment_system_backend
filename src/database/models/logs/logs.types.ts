@@ -18,6 +18,11 @@ export interface LogAttributes {
   graphql_endpoint: string;
 
   /**
+   * The arguments passed from the args parameter of all Graphql Resolvers
+   */
+  graphql_arguments: string;
+
+  /**
    * Dictates whether the request was successful or not
    */
   request_status: boolean;
