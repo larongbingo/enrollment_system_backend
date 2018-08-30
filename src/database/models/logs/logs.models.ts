@@ -16,7 +16,7 @@ export function LogsModelFactory(sequelize: Sequelize) {
       type: STRING
     },
     graphql_arguments: {
-      type: STRING,
+      type: TEXT('long'),
       allowNull: true
     },
     request_status: {
