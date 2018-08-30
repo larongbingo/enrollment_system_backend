@@ -1,4 +1,4 @@
-import { Sequelize, DefineOptions, DefineAttributes, UUID, STRING, BOOLEAN } from 'sequelize';
+import { Sequelize, DefineOptions, DefineAttributes, UUID, STRING, BOOLEAN, TEXT } from 'sequelize';
 
 import { LogInstance, LogAttributes } from './logs.types';
 
@@ -9,7 +9,7 @@ export function LogsModelFactory(sequelize: Sequelize) {
       allowNull: true
     },
     message: {
-      type: STRING,
+      type: TEXT('long'),
       allowNull: true
     },
     graphql_endpoint: {
