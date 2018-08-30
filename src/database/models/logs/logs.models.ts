@@ -25,7 +25,9 @@ export function LogsModelFactory(sequelize: Sequelize) {
     }
   };
 
-  const options: DefineOptions<LogInstance> = { };
+  const options: DefineOptions<LogInstance> = {
+    paranoid: true
+  };
 
   const LogsModelName: string = 'logs';
 
