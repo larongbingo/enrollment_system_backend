@@ -1,6 +1,6 @@
 import { GraphQLFieldResolver } from 'graphql';
 
-import { createUser } from '@database/index';
+import { createUser, Models, LogAttributes } from '@database/index';
 import { SuccessfulRequest, FailedRequest } from '@graphql/types';
 
 import { NewUserDetails } from './createUser.mutation.types';
@@ -12,14 +12,35 @@ import { NewUserDetails } from './createUser.mutation.types';
  */
 export const createUserMutationResolver: GraphQLFieldResolver<void, void, NewUserDetails> =
   (source, args) => {
+    let logEntry: LogAttributes = {
+      graphql_endpoint: "createUserMutation",
+      graphql_arguments: JSON.stringify(args)
+    };
+
     return createUser(args.userDetails)
     .then(async user => {
-      if(!user) return new FailedRequest('Username already taken');
+      if(!user) {
+        logEntry.message = "Username already taken";
+        logEntry.request_status = false;
 
-      return new SuccessfulRequest({ id: user.id });
+        return await Models.Logs.create(logEntry)
+        .then(() => new FailedRequest('Username already taken'))
+      }
+
+      logEntry.request_status = true;
+      logEntry.message = "New user created: id=" + user.id;
+      logEntry.user = user.id;
+
+      return await Models.Logs.create(logEntry)
+      .then(() => new SuccessfulRequest({ id: user.id })); 
     })
-    .catch(err => {
+    .catch(async err => {
       console.log(err);
-      return new FailedRequest('Error occured during the creation of the user, please try again.')
+
+      logEntry.request_status = false;
+      logEntry.message = JSON.stringify(err);
+
+      return await Models.Logs.create(logEntry)
+      .then(() => new FailedRequest('Error occured during the creation of the user, please try again.'));
     });
   }
