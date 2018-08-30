@@ -9,7 +9,8 @@ export function LogsModelFactory(sequelize: Sequelize) {
       allowNull: true
     },
     message: {
-      type: STRING
+      type: STRING,
+      allowNull: true
     },
     graphql_endpoint: {
       type: STRING

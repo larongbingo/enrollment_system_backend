@@ -10,7 +10,7 @@ export interface LogAttributes {
   /**
    * Message of the request
    */
-  message: string;
+  message?: string;
   
   /**
    * Dictates which endpoint that recieved the request
