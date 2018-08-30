@@ -5,7 +5,8 @@ import { LogInstance, LogAttributes } from './logs.types';
 export function LogsModelFactory(sequelize: Sequelize) {
   const attributes: DefineAttributes = {
     user: {
-      type: UUID
+      type: UUID,
+      allowNull: true
     },
     message: {
       type: STRING
@@ -13,8 +14,13 @@ export function LogsModelFactory(sequelize: Sequelize) {
     graphql_endpoint: {
       type: STRING
     },
+    graphql_arguments: {
+      type: STRING,
+      allowNull: true
+    },
     request_status: {
-      type: BOOLEAN
+      type: BOOLEAN,
+      allowNull: true
     }
   };
 
