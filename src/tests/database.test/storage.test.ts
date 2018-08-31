@@ -1,6 +1,6 @@
 import 'mocha';
 
-import { Models } from '@database/index';
+import { Models, UserAttributes } from '@database/index';
 import { generateFakeUsers } from '@lib';
 
 export function storageTests() {
@@ -20,7 +20,24 @@ export function storageTests() {
         })();
       });
       
-      // Not all Promises are completed before running done()
+      it('should throw an error for usernames that have been taken', function(done) {
+        const testAccount: UserAttributes = {
+          firstName: 'This is a tet',
+          middleName: 'ASDASDASDASD',
+          lastName: 'ASDASDASDASDASD',
+
+          username: 'aasdasdasdasdasdasdasdasdasdasd',
+          password: 'asdasdasdasdasdasdasdasdasdasdasd'
+        };
+        
+        (async function() {
+          await Models.Users.create(testAccount)
+          .then(async () => await Models.Users.create(testAccount))
+          .then(() => done('Model did not throw an error'))
+          .catch(() => done());
+        })();
+      });
+
       it('deletes all entries in the database', function(done) {
         this.timeout(60000);
         this.slow(17000);
