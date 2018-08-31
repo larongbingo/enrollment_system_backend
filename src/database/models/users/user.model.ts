@@ -1,6 +1,7 @@
 import { DefineOptions, DefineAttributes, Sequelize, UUID, UUIDV4, STRING, ENUM, BOOLEAN } from 'sequelize';
 
-import { UserInstance, UserAttributes, UserTypes } from './user.types';
+import { Models } from '@database/index';
+import { UserInstance, UserAttributes, UserTypes, UserCreationError } from './user.types';
 import { HashCredentials } from './hash.credentials';
 
 export function UserModelFactory(sequelize: Sequelize) {
@@ -13,6 +14,9 @@ export function UserModelFactory(sequelize: Sequelize) {
         }
       },
       async beforeCreate(user) {
+        await Models.Users.findOne({ where: { username: user.username } })
+        .then(user => { if(user) throw new UserCreationError('Username already taken', 'Username already taken', user) });
+
         await HashCredentials(user, user.password)
         .then(pw => user.password = pw);
       }
