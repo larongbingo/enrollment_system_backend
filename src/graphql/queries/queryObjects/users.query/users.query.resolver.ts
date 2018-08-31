@@ -1,6 +1,6 @@
 import { GraphQLFieldResolver } from 'graphql';
 
-import { UserAttributes, Models, LogAttributes, UserTypes } from '@database/index';
+import { UserAttributes, Models, LogAttributes } from '@database/index';
 
 export const userQueryResolver: GraphQLFieldResolver<UserAttributes, void> = 
   (source, args) => {
