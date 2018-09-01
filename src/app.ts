@@ -24,10 +24,12 @@ app.use('/api', GraphqlHTTP({
   graphiql: false
 }));
 
-app.use('/graphiql', GraphqlHTTP({
-  schema: Schema,
-  graphiql: true
-}));
+if(process.env.NODE_ENV === 'production') {
+  app.use('/graphiql', GraphqlHTTP({
+    schema: Schema,
+    graphiql: true
+  }));
+}
 
 app.use(Create404);
 app.use(ErrorHandler);
