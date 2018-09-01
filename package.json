@@ -8,9 +8,9 @@
   "license": "AGPL-3.0",
   "scripts": {
     "prebuild": "rimraf ./build",
-    "build": "babel ./src --out-dir ./build --extensions \".ts\"",
+    "build": "babel ./src --out-dir ./build --extensions \".ts\" --source-maps",
     "start": "node ./build/index.js",
-    "test": "mocha ./build/tests/index.js --exit --bail",
+    "test": "nyc mocha ./build/tests/index.js --require ts-node/register --require source-map-support/register --recursive --exit --bail",
     "random-data": "node ./build/scripts/create.random.data.js",
     "update-tables": "node ./build/scripts/update.tables.to.mysql.js",
     "add-admin": "node ./build/scripts/add.admin.user.js"
@@ -43,8 +43,11 @@
     "chai": "^4.1.2",
     "chai-http": "^4.0.0",
     "faker": "^4.1.0",
+    "install": "^0.12.1",
     "mocha": "^5.2.0",
+    "nyc": "^13.0.1",
     "rimraf": "^2.6.2",
+    "source-map-support": "^0.5.9",
     "typescript": "^3.0.1"
   },
   "dependencies": {
@@ -64,5 +67,15 @@
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "sequelize": "^4.38.0"
+  },
+  "nyc": {
+    "exclude": [
+      "**/*.d.js",
+      "**/*.types.js",
+      "**/scripts",
+      "**/tests",
+      "**/build/index.js"
+    ],
+    "all": true  
   }
 }

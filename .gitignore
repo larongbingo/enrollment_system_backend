@@ -3,3 +3,4 @@
 /build
 todolist.txt
 .env
+.nyc_output
