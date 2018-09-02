@@ -24,7 +24,7 @@ app.use('/api', GraphqlHTTP({
   graphiql: false
 }));
 
-if(process.env.NODE_ENV === 'production') {
+if(process.env.NODE_ENV === 'testing') {
   app.use('/graphiql', GraphqlHTTP({
     schema: Schema,
     graphiql: true
