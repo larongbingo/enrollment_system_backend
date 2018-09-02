@@ -21,7 +21,13 @@ export const userQueryResolver: GraphQLFieldResolver<UserAttributes, void, UserA
       logEntry.message = JSON.stringify(err);
       logEntry.request_status = true;
 
-      return await Models.Logs.create(logEntry)
-      .then(() => []);
+      try {
+        await Models.Logs.create(logEntry)
+      }
+      catch(logErr) {
+        console.log(logErr);
+      }
+    
+      return [];
     })
   }

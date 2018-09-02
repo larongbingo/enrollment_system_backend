@@ -40,10 +40,10 @@ export const updateMultipleUserDetailsMutationResolver:
           logEntry.request_status = true;
           logEntry.user = user.id;
 
-          return await Models.Logs.create(logEntry)
-          .then(async () => await user.save())
+          return await user.save()
           .then(async () => await token.destroy())
-          .then(async () => new SuccessfulRequest({updatedDetails: args.update}));
+          .then(async () => Models.Logs.create(logEntry))    
+          .then(() => new SuccessfulRequest({updatedDetails: args.update}));
         });
       })
       .catch(async err => {
