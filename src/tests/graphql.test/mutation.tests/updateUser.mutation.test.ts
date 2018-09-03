@@ -5,8 +5,8 @@ import 'mocha';
 
 import { UserAttributes } from '@database/index';
 
-export function updateMultipleUserDetailsMutationTest(server: Server) {
-  describe('updateMultipleUserDetails Mutation Test', function() {
+export function updateUserMutationTest(server: Server) {
+  describe('updateUser Mutation Test', function() {
     let user: UserAttributes = {
       firstName: 'testUser',
       middleName: 'testUser',
@@ -42,8 +42,8 @@ export function updateMultipleUserDetailsMutationTest(server: Server) {
     it('identify that the token is invalid', function(done) {
       (async function() {
         await request(server)
-        .post(`/api?query=mutation{updateMultipleUserDetails(update:${inspect(user).replace(/([\'])/g, '"')}, token:"ASDASD")}`)
-        .then(async req => expect(req.body.data.updateMultipleUserDetails.success).to.be.equal(false))
+        .post(`/api?query=mutation{updateUser(update:${inspect(user).replace(/([\'])/g, '"')}, token:"ASDASD")}`)
+        .then(async req => expect(req.body.data.updateUser.success).to.be.equal(false))
         .then(() => done())
         .catch(err => done(err)); 
       })();
@@ -54,8 +54,8 @@ export function updateMultipleUserDetailsMutationTest(server: Server) {
 
       (async function() {
         await request(server)
-        .post(`/api?query=mutation{updateMultipleUserDetails(update:${inspect(user).replace(/([\'])/g, '"')}, token: "${_token}")}`)
-        .then(async req => expect(req.body.data.updateMultipleUserDetails.data.updatedDetails.firstName).to.be.equal("This is a test"))
+        .post(`/api?query=mutation{updateUser(update:${inspect(user).replace(/([\'])/g, '"')}, token: "${_token}")}`)
+        .then(async req => expect(req.body.data.updateUser.data.updatedDetails.firstName).to.be.equal("This is a test"))
         .then(() => done())
         .catch(err => done(err));
       })();
@@ -76,8 +76,8 @@ export function updateMultipleUserDetailsMutationTest(server: Server) {
 
       (async function() {
         await request(server)
-        .post(`/api?query=mutation{updateMultipleUserDetails(update:${inspect(user).replace(/([\'])/g, '"')},token:"${_token}")}`)
-        .then(async req => expect(req.body.data.updateMultipleUserDetails.success).to.be.equal(true))
+        .post(`/api?query=mutation{updateUser(update:${inspect(user).replace(/([\'])/g, '"')},token:"${_token}")}`)
+        .then(async req => expect(req.body.data.updateUser.success).to.be.equal(true))
         .then(() => done())
         .catch(err => done(err));
       })();
