@@ -27,8 +27,9 @@ env:
 before_install:
   - npm i -g npm@5.6.0
   - sudo mysql -e "use mysql; update user set authentication_string=PASSWORD('root') where User='root'; update user set plugin='root';FLUSH PRIVILEGES;"
-  - sudo mysql_upgrade -u root --password=rootA
+  - sudo mysql_upgrade -u root --password=root
   - sudo service mysql restart
+  - sudo mysql -e "CREATE DATABASE enrollment_system;"
   - npm install
   - npm run build
 script:
