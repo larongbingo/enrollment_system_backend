@@ -1,14 +1,24 @@
 import { DefineOptions, DefineAttributes, Sequelize, UUID, UUIDV4, STRING, ENUM, BOOLEAN } from 'sequelize';
 
-import { UserInstance, UserAttributes, UserTypes } from './user.types';
+import { Models } from '@database/index';
+import { UserInstance, UserAttributes, UserTypes, UserCreationError } from './user.types';
 import { HashCredentials } from './hash.credentials';
 
 export function UserModelFactory(sequelize: Sequelize) {
   const options: DefineOptions<UserInstance> = {
     hooks: {
-      async beforeValidate(user) {
-        await HashCredentials(user, user.password)
+      async beforeUpdate(user) {
+        if(user.password) {
+          await HashCredentials(user, user.password)
           .then(pw => user.password = pw);
+        }
+      },
+      async beforeCreate(user) {
+        await Models.Users.findOne({ where: { username: user.username } })
+        .then(user => { if(user) throw new UserCreationError('Username already taken', 'Username already taken', user) });
+
+        await HashCredentials(user, user.password)
+        .then(pw => user.password = pw);
       }
     },
     paranoid: true

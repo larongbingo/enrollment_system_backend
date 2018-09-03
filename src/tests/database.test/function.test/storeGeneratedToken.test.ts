@@ -11,7 +11,7 @@ export function storeGeneratedTokenTest() {
       this.slow(17000);
   
       (async function() {
-        await generateFakeUsers(20, false);
+        await generateFakeUsers(10, false);
         done();
       })();
     });
@@ -28,7 +28,7 @@ export function storeGeneratedTokenTest() {
       })();
     });
   
-    it('all 20 user details be stored to database', function(done) {
+    it('all 10 user details be stored to database', function(done) {
       this.timeout(5000);
       this.slow(4000);
 
@@ -37,7 +37,7 @@ export function storeGeneratedTokenTest() {
         .then(async users => await users.forEach(async user => await storeGeneratedToken(user)))
         
         await Models.Tokens.all()
-        .then(tokens => expect(tokens.length).is.equal(20));
+        .then(tokens => expect(tokens.length).is.equal(10));
   
         done();
       })();

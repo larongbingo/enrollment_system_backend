@@ -1,5 +1,6 @@
 import { expect, request } from 'chai';
 import { Server } from 'http';
+import { inspect } from 'util';
 import 'mocha';
 
 import { UserAttributes, Models } from '@database/index';
@@ -14,8 +15,8 @@ export function createUserMutationTest(server: Server) {
       middleName: 'ASDF',
       lastName: 'ASDF'
     };
-
-    const requestString = `/api?query=mutation{createUser(username: "${tempUser.username}", password: "${tempUser.password}", firstName: "${tempUser.firstName}", middleName: "${tempUser.middleName}", lastName: "${tempUser.lastName}")}`;
+    
+    const requestString = `/api?query=mutation{createUser(userDetails:${inspect(tempUser).replace(/([\'])/g, '"')})}`
   
     after(function(done) {
       (async function() {
@@ -26,20 +27,22 @@ export function createUserMutationTest(server: Server) {
 
     it('create a user', function(done) {
       (async function() {
-        request(server)
+        await request(server)
         .post(requestString)
-        .then(req => expect(req.body.data.createUser.success).to.be.equal(true));
-        done();
+        .then(req => expect(req.body.data.createUser.success).to.be.equal(true))
+        .then(() => done())
+        .catch(err => done(err));
       })();
     });
 
 
     it('fails to create a user with the username', function(done) {
       (async function() {
-        request(server)
+        await request(server)
         .post(requestString)
-        .then(req => expect(req.body.data.createUser.success).to.be.equal(false));
-        done();
+        .then(req => expect(req.body.data.createUser.success).to.be.equal(false))
+        .then(() => done())
+        .catch(err => done(err));
       })();
     });
   });

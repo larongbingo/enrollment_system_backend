@@ -84,3 +84,13 @@ export enum UserTypes {
   ADMIN = 'ADMIN',
   STAFF = 'STAFF'
 };
+
+export class UserCreationError extends Error {
+  constructor(name: string, message: string, userDetails: UserAttributes) {
+    super(message);
+    this.userDetails = userDetails;
+    this.name = name;
+  }
+
+  public userDetails: UserAttributes;
+}

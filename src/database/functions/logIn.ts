@@ -14,6 +14,6 @@ export async function logIn(username: string, password: string): Promise<UserIns
     });
 }
 
-function concatenateCredentials(userInstance: UserInstance, password: string): string {
+export function concatenateCredentials(userInstance: UserInstance, password: string): string {
   return userInstance.username + password;
 }

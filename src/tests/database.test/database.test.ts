@@ -4,8 +4,10 @@ import { sequelize } from '@database/index';
 
 import { storageTests } from './storage.test';
 import { functionTests } from './function.test';
+import { queryTest } from './query.test';
+import { Server } from 'http';
 
-export function databaseTest() {
+export function databaseTest(server: Server) {
   describe('Database Tests', function() {
     it('test connection with the MySQL Client', function(done) {
       this.timeout(5000);
@@ -27,7 +29,8 @@ export function databaseTest() {
       })();
     })
 
-    storageTests(); 
+    storageTests();
+    queryTest(server);
     functionTests();
   });
 } 

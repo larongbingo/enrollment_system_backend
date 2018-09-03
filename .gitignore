@@ -1,5 +1,8 @@
 /.cache
 /node_modules
 /build
+/.nyc_output
+/coverage
+/.vscode
 todolist.txt
 .env

@@ -1,4 +1,4 @@
-import { GraphQLInputObjectTypeConfig, GraphQLString, GraphQLInputObjectType } from 'graphql';
+import { GraphQLInputObjectTypeConfig, GraphQLString, GraphQLInputObjectType, GraphQLNonNull } from 'graphql';
 
 import { UserAttributes } from '@database/index';
 
