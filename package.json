@@ -12,7 +12,7 @@
     "build": "babel ./src --out-dir ./build --extensions \".ts\" --source-maps",
     "build:prod": "babel ./src --out-dir ./build --extensions \".ts\" --minified --ignore ./src/scripts,./src/tests ",
     "start": "node ./build/index.js",
-    "test": "nyc mocha ./build/tests/index.js --require ts-node/register --require source-map-support/register --recursive --exit --bail",
+    "test": "nyc mocha ./build/tests/index.js --require source-map-support/register --recursive --exit --bail",
     "random-data": "node ./build/scripts/create.random.data.js",
     "update-tables": "node ./build/scripts/update.tables.to.mysql.js",
     "add-admin": "node ./build/scripts/add.admin.user.js"
