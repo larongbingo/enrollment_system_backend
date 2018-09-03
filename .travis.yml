@@ -1,7 +1,5 @@
 sudo: required
 
-os: ubuntu
-
 language: node_js
 node_js:
   - "8.11.3"
