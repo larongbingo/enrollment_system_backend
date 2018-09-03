@@ -3,5 +3,6 @@
 /build
 /.nyc_output
 /coverage
+/.vscode
 todolist.txt
 .env
