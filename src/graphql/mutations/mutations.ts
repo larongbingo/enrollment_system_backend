@@ -8,6 +8,6 @@ export const rootMutationObject = new GraphQLObjectType({
   fields: {
     logIn: logInMutation,
     createUser: updatedCreateUserMutation,
-    updateMultipleUserDetails: updateMultipleUserDetails
+    updateUser: updateMultipleUserDetails
   }
 });
