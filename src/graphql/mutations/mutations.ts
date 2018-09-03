@@ -1,6 +1,6 @@
 import { GraphQLObjectType } from 'graphql';
 
-import { logInMutation, updatedCreateUserMutation, updateUserMutation, updateMultipleUserDetails } from './mutationObjects';
+import { logInMutation, updatedCreateUserMutation, updateMultipleUserDetails } from './mutationObjects';
 
 export const rootMutationObject = new GraphQLObjectType({
   name: 'Mutations',
@@ -8,7 +8,6 @@ export const rootMutationObject = new GraphQLObjectType({
   fields: {
     logIn: logInMutation,
     createUser: updatedCreateUserMutation,
-    updateUser: updateUserMutation,
     updateMultipleUserDetails: updateMultipleUserDetails
   }
 });
