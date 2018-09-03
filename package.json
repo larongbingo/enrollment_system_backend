@@ -76,7 +76,8 @@
       "**/*.types.js",
       "**/scripts",
       "**/tests",
-      "**/build/index.js"
+      "**/build/index.js",
+      "**/coverage"
     ],
     "all": true  
   }
