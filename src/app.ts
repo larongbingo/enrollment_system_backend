@@ -4,7 +4,7 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 import GraphqlHTTP from 'express-graphql';
 
-import { Schema } from '@graphql/index';
+import { Schema } from '@graphql/schema';
 import { Create404, ErrorHandler } from './middlewares';
 
 const app = express();
