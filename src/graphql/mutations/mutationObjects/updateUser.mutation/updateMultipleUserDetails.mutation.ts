@@ -4,7 +4,7 @@ import GraphQLJSON from 'graphql-type-json';
 import { updateMultipleUserDetailsMutationResolver } from './updateMultipleUserDetails.mutation.resolver';
 import { ValidFieldsType } from './updateMultipleUserDetails.mutation.types';
 
-export const updateMultipleUserDetails: GraphQLFieldConfig<void, void, any> = {
+export const updateUserDetail: GraphQLFieldConfig<void, void, any> = {
   description: 'Takes in a JSON Object and uses that to update the details of the user',
   type: GraphQLJSON,
   args: {
