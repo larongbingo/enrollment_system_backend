@@ -40,6 +40,7 @@
     "@types/mocha": "^5.2.5",
     "@types/morgan": "^1.7.35",
     "@types/node": "^10.5.6",
+    "@types/randomstring": "^1.1.6",
     "@types/sequelize": "^4.27.24",
     "babel-plugin-module-resolver": "^3.1.1",
     "chai": "^4.1.2",
@@ -66,6 +67,7 @@
     "jsonwebtoken": "^8.3.0",
     "morgan": "^1.9.0",
     "mysql2": "^1.6.1",
+    "randomstring": "^1.1.5",
     "react": "^16.4.2",
     "react-dom": "^16.4.2",
     "sequelize": "^4.38.0"
@@ -79,6 +81,6 @@
       "**/build/index.js",
       "**/coverage"
     ],
-    "all": true  
+    "all": true
   }
 }
