@@ -29,8 +29,8 @@ export function storeGeneratedTokenTest() {
     });
   
     it('all 10 user details be stored to database', function(done) {
-      this.timeout(5000);
-      this.slow(4000);
+      this.timeout(8000);
+      this.slow(6000);
 
       (async function() {
         await Models.Users.all()
