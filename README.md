@@ -1,6 +1,14 @@
 # Enrollment System - backend
 The backend of the entire enrollment app
 
+## Project Status
+### Master Branch
+[![Build Status](https://travis-ci.org/larongbingo/enrollment_system.svg?branch=master)](https://travis-ci.org/larongbingo/enrollment_system)
+[![Coverage Status](https://coveralls.io/repos/github/larongbingo/enrollment_system/badge.svg?branch=master)](https://coveralls.io/github/larongbingo/enrollment_system?branch=master)
+### Development Branch
+[![Build Status](https://travis-ci.org/larongbingo/enrollment_system.svg?branch=development)](https://travis-ci.org/larongbingo/enrollment_system)
+[![Coverage Status](https://coveralls.io/repos/github/larongbingo/enrollment_system/badge.svg?branch=development)](https://coveralls.io/github/larongbingo/enrollment_system?branch=development)
+
 ## License
 Enrollment System, handles the enrollment of students
 Copyright (C) 2018 Renz Christen Yeomer A. Pagulayan
