@@ -38,7 +38,11 @@ export function storeGeneratedTokenTest() {
         .then(async users => await users.forEach(async user => await storeGeneratedToken(user)))
         
         await Models.Tokens.all()
+<<<<<<< HEAD
         .then(tokens => expect(tokens.length).is.greaterThan(4));
+=======
+        .then(tokens => expect(tokens.length).is.equal(5));
+>>>>>>> d680d9e36485a1f53c13449f1698fcd7901dee82
   
         done();
       })();
