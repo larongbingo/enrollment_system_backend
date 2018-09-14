@@ -1,7 +1,6 @@
 import { decode } from 'jsonwebtoken';
 
-import { Models } from '@database/index';
-import { TokenInstance } from '@database/index';
+import { Models, TokenInstance, TokenTypes } from '@database/index';
 
 /**
  * Checks if the given session token is valid or not.

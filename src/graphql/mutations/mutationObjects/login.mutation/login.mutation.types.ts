@@ -8,4 +8,9 @@ export interface LogInCredentials {
    * Password sent from the client
    */
   password: string;
+
+  /**
+   * CSRF Token for logging
+   */
+  CSRF_Token?: string;
 }

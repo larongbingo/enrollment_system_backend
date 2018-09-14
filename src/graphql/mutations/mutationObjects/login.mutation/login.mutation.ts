@@ -14,6 +14,10 @@ export const logInMutation: GraphQLFieldConfig<void, void, any> = {
     password: {
       type: new GraphQLNonNull(GraphQLString),
       description: 'The password of the user'
+    },
+    CSRF_Token: {
+      type: GraphQLString,
+      description: 'The CSRF Token of the log in request'
     }
   },
   resolve: loginMutationResolver
