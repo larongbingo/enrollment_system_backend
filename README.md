@@ -2,12 +2,9 @@
 The backend of the entire enrollment app
 
 ## Project Status
-### Master Branch
+[![License Image](https://github.com/larongbingo/enrollment_system/blob/master/LICENSE)](https://img.shields.io/badge/License-AGPL--3.0-lightgrey.svg)
 [![Build Status](https://travis-ci.org/larongbingo/enrollment_system.svg?branch=master)](https://travis-ci.org/larongbingo/enrollment_system)
 [![Coverage Status](https://coveralls.io/repos/github/larongbingo/enrollment_system/badge.svg?branch=master)](https://coveralls.io/github/larongbingo/enrollment_system?branch=master)
-### Development Branch
-[![Build Status](https://travis-ci.org/larongbingo/enrollment_system.svg?branch=development)](https://travis-ci.org/larongbingo/enrollment_system)
-[![Coverage Status](https://coveralls.io/repos/github/larongbingo/enrollment_system/badge.svg?branch=development)](https://coveralls.io/github/larongbingo/enrollment_system?branch=development)
 
 ## License
 Enrollment System, handles the enrollment of students
