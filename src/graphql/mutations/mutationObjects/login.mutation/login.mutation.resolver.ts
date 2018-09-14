@@ -23,6 +23,8 @@ export const loginMutationResolver: GraphQLFieldResolver<void, void, LogInCreden
           .then(() => new FailedRequest('Invalid Token'));
         }
 
+        await token.destroy();
+
         return logIn(args.username, args.password)
         .then(async res => {
           if(!res) {
